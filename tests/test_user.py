@@ -36,7 +36,7 @@ def test_create_user_with_valid_email():
         'email': 'm.m.markovich@mail.com'
     }
     response = client.post("/api/v1/user", json=new_user)
-    assert response.status_code == 200
+    assert response.status_code == 201
 
 def test_create_user_with_invalid_email():
     '''Создание пользователя с почтой, которую использует другой пользователь'''
@@ -55,4 +55,4 @@ def test_delete_user():
     }
     response = client.post("/api/v1/user", json=new_user)
     response = client.get("/api/v1/user", params={'email': 'test@mail.com'})
-    assert response.status_code == 200
+    assert response.status_code == 204
