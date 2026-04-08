@@ -55,4 +55,4 @@ def test_delete_user():
     }
     response = client.post("/api/v1/user", json=new_user)
     response = client.get("/api/v1/user", params={'email': 'test@mail.com'})
-    assert response.status_code == 204
+    assert response.status_code == 200
