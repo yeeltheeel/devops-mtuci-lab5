@@ -35,7 +35,7 @@ def test_create_user_with_valid_email():
         'name': 'Mark Markovich',
         'email': 'm.m.markovich@mail.com'
     }
-    response = client.post("/api/v1/user", params=new_user)
+    response = client.post("/api/v1/user", json=new_user)
     assert response.status_code == 200
 
 def test_create_user_with_invalid_email():
@@ -44,7 +44,7 @@ def test_create_user_with_invalid_email():
         'name': 'Fakevan Fakevanov',
         'email': 'i.i.ivanov@mail.com'
     }
-    response = client.post("/api/v1/user", params=new_user)
+    response = client.post("/api/v1/user", json=new_user)
     assert response.status_code == 409
 
 def test_delete_user():
@@ -53,6 +53,6 @@ def test_delete_user():
         'name': 'test user',
         'email': 'test@mail.com'
     }
-    response = client.post("/api/v1/user", params=new_user)
+    response = client.post("/api/v1/user", json=new_user)
     response = client.get("/api/v1/user", params={'email': 'test@mail.com'})
     assert response.status_code == 200
