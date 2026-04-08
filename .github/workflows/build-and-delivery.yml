@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }} 
     steps:
-    - name: Debug credentials
+    - name: Debug credentials # login error
       run: |
         echo "USERNAME: ${{ vars.DOCKERHUB_USERNAME }}"
         echo "TOKEN_LEN: $(echo '${{ secrets.DOCKERHUB_TOKEN }}' | wc -c)"
